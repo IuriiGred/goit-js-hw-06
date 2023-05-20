@@ -5,35 +5,32 @@ function getRandomHexColor() {
 }
 
 const inputNumber = document.querySelector('input');
-const buttonCreate = document.querySelector('[data-create]');
-const buttonDestroy = document.querySelector('[data-destroy]');
-const plasePushElement = document.querySelector('[id="boxes"]');
+const buttoCreate = document.querySelector('[data-create]');
+const buttoDestroy = document.querySelector('[data-destroy]');
 
-// console.dir(inputNumber);
-// console.dir(buttonCreate.hasAttribute('data-create'));
-// console.dir(buttonDestroy.hasAttribute('data-destroy'));
+console.dir(inputNumber);
+console.dir(buttoCreate.hasAttribute('data-create'));
+console.dir(buttoDestroy.hasAttribute('data-destroy'));
 
+// inputNumber.addEventListener('input', onInput);
+// function onInput(){
+//     // console.log(inputNumber.value);
+//     }
 
-let arrayOfCreateEl = [];
-let size = 30;
-const step = 10;
-
-buttonCreate.addEventListener('click', onCreate);
-
-function onCreate(evt){
-const amount = inputNumber.value;
-
-for (let i = 0; i < amount; i += 1) {
-  let creatNewElementTarget = document.createElement('div');
-creatNewElementTarget.classList.add("js-class");
-creatNewElementTarget.style.backgroundColor = getRandomHexColor();
-creatNewElementTarget.style.width = `${size + i * step}px`;
-creatNewElementTarget.style.height = `${size + i * step}px`;
-arrayOfCreateEl.push(creatNewElementTarget);
-}
-plasePushElement.append(...arrayOfCreateEl);
-
-}
-
-// Це звичайно не обовязково, але цікаво.
-// Як знищити створені елементи? Весь дів можу знищити.
+// function onClick(evt){
+  //   amount = inputNumber.value;
+  //   for (let i = 0; i < amount; i += 1) {
+    
+    //   }
+    // return amount;
+    // }
+    
+    // console.log(amount);
+    
+    const createBoxes = (amount) => {
+      amount = inputNumber.value;
+      console.log(amount);
+    }
+    
+    
+    buttoCreate.addEventListener('click', createBoxes);
