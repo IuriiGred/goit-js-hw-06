@@ -7,14 +7,17 @@ function onSubmit(evt){
     evt.preventDefault();
 
     const {email,password} = evt.currentTarget.elements;
+    const emailTrim = email.value.trim();
+    const passwordTrim = password.value.trim();
+    
 
-    if ((email.value && password.value) === ""){
+    if (!emailTrim || !passwordTrim){
         return alert('Всі поля повинні бути заповнені!');
     } 
       
     const data = {
-      email: email.value,
-      password: password.value,
+      email: emailTrim,
+      password: passwordTrim,
     };
           
     console.log(data);
