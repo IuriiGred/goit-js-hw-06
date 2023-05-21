@@ -9,7 +9,7 @@ function onInput(evt){
     if (evt.currentTarget.value !== ""){
         userNameOutputHandler.textContent = evt.currentTarget.value;
     } else {
-        userNameOutputHandler.textContent = "";
+        userNameOutputHandler.textContent = "Anonymous";
     }
 }
 

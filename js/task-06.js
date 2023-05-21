@@ -1,24 +1,28 @@
 const userInputHandler = document.querySelector('[id="validation-input"]');
 const controlLength = +userInputHandler.dataset.length;
 
-
-userInputHandler.addEventListener('input', onInput);
-
-function onInput(evt){
+userInputHandler.addEventListener("blur", (evt) => {
     let leng = evt.currentTarget.value.length;
+    // console.log(leng);
     evt.target.style.outline = "none";
+    if(!leng){
+        userInputHandler.classList.add("invalid");
+    }
     
-    if (leng < controlLength){
+    if (leng < controlLength || leng > controlLength){
         if (userInputHandler.hasAttribute("class")){
             userInputHandler.classList.replace("valid", "invalid");
         }
-    userInputHandler.classList.add("invalid");
-    }
-    else if(leng === controlLength){
-        userInputHandler.classList.replace("invalid", "valid");
     } else {
-        userInputHandler.classList.replace("valid", "invalid");
+        userInputHandler.classList.replace("invalid", "valid");
     }
-}
+  });
+
+  userInputHandler.addEventListener("focus", () => {
+    userInputHandler.classList.add("invalid");
+
+    userInputHandler.value = "";
+  });
+
 
 

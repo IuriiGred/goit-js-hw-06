@@ -4,33 +4,53 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
+ 
 const inputNumber = document.querySelector('input');
-const buttoCreate = document.querySelector('[data-create]');
-const buttoDestroy = document.querySelector('[data-destroy]');
+const buttonCreate = document.querySelector('[data-create]');
+const buttonDestroy = document.querySelector('[data-destroy]');
+const plasePushElement = document.querySelector('[id="boxes"]');
+const plaseForOldEl = document.querySelector('[id="controls"]')
 
-console.dir(inputNumber);
-console.dir(buttoCreate.hasAttribute('data-create'));
-console.dir(buttoDestroy.hasAttribute('data-destroy'));
+let arrayOfCreateEl = [];
+let size = 30;
+const step = 10;
 
-// inputNumber.addEventListener('input', onInput);
-// function onInput(){
-//     // console.log(inputNumber.value);
-//     }
+buttonCreate.addEventListener('click', onCreate);
 
-// function onClick(evt){
-  //   amount = inputNumber.value;
-  //   for (let i = 0; i < amount; i += 1) {
-    
-    //   }
-    // return amount;
-    // }
-    
-    // console.log(amount);
-    
-    const createBoxes = (amount) => {
-      amount = inputNumber.value;
-      console.log(amount);
-    }
-    
-    
-    buttoCreate.addEventListener('click', createBoxes);
+function onCreate(evt){
+const amount = inputNumber.value;
+
+for (let i = 0; i < amount; i += 1) {
+  let creatNewElementTarget = document.createElement('div');
+  let sideSize = `${size + i * step}px`;
+
+    creatNewElementTarget.classList.add("js-class");
+    creatNewElementTarget.style.backgroundColor = getRandomHexColor();
+    creatNewElementTarget.style.width = sideSize;
+    creatNewElementTarget.style.height = sideSize;
+
+  arrayOfCreateEl.push(creatNewElementTarget);
+}
+
+plasePushElement.append(...arrayOfCreateEl);
+
+buttonCreate.removeEventListener('click', onCreate);
+}
+
+buttonDestroy.addEventListener('click', onDestroy);
+
+function onDestroy(evt){
+  const clearPlaseEl = document.querySelector('[id="boxes"]');
+  clearPlaseEl.remove();
+  
+  const returnElement = `<div id="boxes"></div>`;
+  plaseForOldEl.insertAdjacentHTML("afterend", returnElement);
+
+// const amount = inputNumber.value;
+
+// for (let i = 0; i < amount; i += 1) {
+// const elementForRemove = document.querySelector(".js-class");
+// elementForRemove.remove();
+// }
+// buttonDestroy.removeEventListener('click', onDestroy);
+}
